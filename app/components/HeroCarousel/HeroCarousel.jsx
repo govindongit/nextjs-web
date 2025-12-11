@@ -13,8 +13,8 @@ export default function HeroCarousel({ interval = 3000 }) {
     },
     {
       id: 2,
-      desktop: "/img/hero/turqtang-in-full-bloom-crop-top (1).webp",
-      mobile: "/img/hero/turqtang-in-full-bloom-crop-top (2).webp",
+      desktop: "/img/hero/turqtang-in-full-bloom-crop-top1.webp",
+      mobile: "/img/hero/turqtang-in-full-bloom-crop-top2.webp",
       alt: "Hero slide 2",
     },
   ];
@@ -39,8 +39,8 @@ export default function HeroCarousel({ interval = 3000 }) {
   return (
     <section className="w-full">
       <div className="relative w-full overflow-hidden">
-        {/* Desktop images (hidden on small screens) */}
-        <div className="hidden md:block w-full h-[420px] relative overflow-hidden">
+        {/* Desktop */}
+        <div className="hidden md:block w-full relative overflow-hidden aspect-[16/7]">
           {slides.map((s, i) => (
             <div
               key={s.id}
@@ -54,7 +54,7 @@ export default function HeroCarousel({ interval = 3000 }) {
                 src={s.desktop}
                 alt={s.alt}
                 fill
-                sizes="(min-width: 768px) 1600px"
+                sizes="100vw"
                 style={{ objectFit: "cover" }}
                 priority={i === 0}
               />
@@ -62,8 +62,8 @@ export default function HeroCarousel({ interval = 3000 }) {
           ))}
         </div>
 
-        {/* Mobile images (shown on small screens) */}
-        <div className="block md:hidden w-full h-[260px] relative overflow-hidden">
+        {/* Mobile */}
+        <div className="block md:hidden w-full relative overflow-hidden aspect-[3/4]">
           {slides.map((s, i) => (
             <div
               key={s.id}
@@ -77,7 +77,7 @@ export default function HeroCarousel({ interval = 3000 }) {
                 src={s.mobile}
                 alt={s.alt}
                 fill
-                sizes="(max-width: 767px) 640px"
+                sizes="100vw"
                 style={{ objectFit: "cover" }}
                 priority={i === 0}
               />
@@ -86,27 +86,25 @@ export default function HeroCarousel({ interval = 3000 }) {
         </div>
 
         {/* Controls */}
-        <div className="relative -mt-[60px] md:-mt-[220px] pointer-events-none">
-          <div className="max-w-6xl mx-auto px-4 flex justify-between items-center pointer-events-auto">
-            <button
-              onClick={prev}
-              aria-label="Previous"
-              className="bg-white/90 hover:bg-white rounded-full p-2 shadow"
-            >
-              ‹
-            </button>
-            <button
-              onClick={next}
-              aria-label="Next"
-              className="bg-white/90 hover:bg-white rounded-full p-2 shadow"
-            >
-              ›
-            </button>
-          </div>
+        <div className="absolute inset-0 flex justify-between items-center px-4 pointer-events-none">
+          <button
+            onClick={prev}
+            aria-label="Previous"
+            className="bg-white rounded-full p-2 shadow pointer-events-auto z-20"
+          >
+            ‹
+          </button>
+          <button
+            onClick={next}
+            aria-label="Next"
+            className="bg-white rounded-full p-2 shadow pointer-events-auto z-20"
+          >
+            ›
+          </button>
         </div>
 
         {/* Indicators */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
           {slides.map((_, i) => (
             <button
               key={i}
