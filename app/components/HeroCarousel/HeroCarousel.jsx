@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-export default function HeroCarousel({ interval = 3000 }) {
+export default function HeroCarousel({ interval = 4000 }) {
   const slides = [
     {
       id: 1,
@@ -32,91 +32,110 @@ export default function HeroCarousel({ interval = 3000 }) {
   function prev() {
     setIndex((i) => (i - 1 + slides.length) % slides.length);
   }
+
   function next() {
     setIndex((i) => (i + 1) % slides.length);
   }
 
+  const isFirstSlide = index === 0;
+
   return (
-    <section className="w-full">
-      <div className="relative w-full overflow-hidden">
-        {/* Desktop */}
-        <div className="hidden md:block w-full relative overflow-hidden aspect-[16/7]">
-          {slides.map((s, i) => (
+    <section className="w-full relative overflow-hidden">
+      {/* Desktop */}
+      <div className="hidden md:block w-full relative">
+        {slides.map((s, i) => {
+          const isActive = i === index;
+
+          return (
             <div
               key={s.id}
-              className={`absolute inset-0 transition-opacity duration-700 ${
-                i === index
-                  ? "opacity-100 z-10"
-                  : "opacity-0 z-0 pointer-events-none"
-              }`}
+              className={`
+                transition-all duration-700 ease-in-out
+                will-change-[opacity,transform]
+                ${
+                  isActive
+                    ? "opacity-100 translate-x-0 scale-100 block"
+                    : "opacity-0 translate-x-6 scale-[1.02] hidden"
+                }
+              `}
             >
               <Image
                 src={s.desktop}
                 alt={s.alt}
-                fill
+                width={1920}
+                height={900}
                 sizes="100vw"
-                style={{ objectFit: "cover" }}
                 priority={i === 0}
+                loading={i === 0 ? "eager" : "lazy"}
+                className="w-full h-auto"
               />
             </div>
-          ))}
-        </div>
+          );
+        })}
+      </div>
 
-        {/* Mobile */}
-        <div className="block md:hidden w-full relative overflow-hidden aspect-[3/4]">
-          {slides.map((s, i) => (
+      {/* Mobile */}
+      <div className="block md:hidden w-full relative">
+        {slides.map((s, i) => {
+          const isActive = i === index;
+
+          return (
             <div
               key={s.id}
-              className={`absolute inset-0 transition-opacity duration-700 ${
-                i === index
-                  ? "opacity-100 z-10"
-                  : "opacity-0 z-0 pointer-events-none"
-              }`}
+              className={`
+                transition-all duration-700 ease-in-out
+                will-change-[opacity,transform]
+                ${
+                  isActive
+                    ? "opacity-100 translate-x-0 scale-100 block"
+                    : "opacity-0 translate-x-6 scale-[1.02] hidden"
+                }
+              `}
             >
               <Image
                 src={s.mobile}
                 alt={s.alt}
-                fill
+                width={1080}
+                height={1350}
                 sizes="100vw"
-                style={{ objectFit: "cover" }}
                 priority={i === 0}
+                loading={i === 0 ? "eager" : "lazy"}
+                className="w-full h-auto"
               />
             </div>
-          ))}
-        </div>
+          );
+        })}
+      </div>
 
-        {/* Controls */}
-        <div className="absolute inset-0 flex justify-between items-center px-4 pointer-events-none">
-          <button
-            onClick={prev}
-            aria-label="Previous"
-            className="bg-white rounded-full p-2 shadow pointer-events-auto z-20"
-          >
-            ‹
-          </button>
-          <button
-            onClick={next}
-            aria-label="Next"
-            className="bg-white rounded-full p-2 shadow pointer-events-auto z-20"
-          >
-            ›
-          </button>
-        </div>
+      {/* Controls */}
+      <div className="absolute inset-0 flex justify-between items-center px-4 pointer-events-none">
+        <button
+          onClick={prev}
+          aria-label="Previous"
+          className="bg-white/80 backdrop-blur rounded-full p-2 shadow pointer-events-auto"
+        >
+          ‹
+        </button>
+        <button
+          onClick={next}
+          aria-label="Next"
+          className="bg-white/80 backdrop-blur rounded-full p-2 shadow pointer-events-auto"
+        >
+          ›
+        </button>
+      </div>
 
-        {/* Indicators */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setIndex(i)}
-              className={`w-2 h-2 rounded-full ${
-                i === index ? "bg-white" : "bg-white/60"
-              }`}
-              aria-label={`Go to slide ${i + 1}`}
-              type="button"
-            />
-          ))}
-        </div>
+      {/* Indicators */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setIndex(i)}
+            className={`w-2.5 h-2.5 rounded-full ${
+              i === index ? "bg-white" : "bg-white/60"
+            }`}
+          />
+        ))}
       </div>
     </section>
   );
