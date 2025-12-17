@@ -3,7 +3,14 @@ export default function Footer() {
     <footer className="bg-gray-100 py-10">
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10 text-center ">
         <div>
-          <h3 className="font-semibold text-lg mb-4">Company</h3>
+          <div className="grid justify-center mb-4">
+            <img
+              src="/next.svg"
+              alt="Company Logo"
+              width={100}
+              height={100}
+            ></img>
+          </div>
           <p className="text-gray-600 text-sm">
             This is all made by the GN for the testing{" "}
           </p>
