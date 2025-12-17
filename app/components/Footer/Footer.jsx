@@ -1,11 +1,11 @@
 export default function Footer() {
   return (
     <footer className="bg-gray-100 py-10">
-      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10 text-center ">
         <div>
           <h3 className="font-semibold text-lg mb-4">Company</h3>
           <p className="text-gray-600 text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            This is all made by the GN for the testing{" "}
           </p>
         </div>
 
@@ -13,17 +13,17 @@ export default function Footer() {
           <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
           <ul className="text-gray-700 text-sm space-y-2">
             <li>
-              <a href="/about" className="hover:text-black">
+              <a href="/pages/about" className="hover:text-black">
                 About
               </a>
             </li>
             <li>
-              <a href="/services" className="hover:text-black">
+              <a href="/pages/ourservices" className="hover:text-black">
                 Services
               </a>
             </li>
             <li>
-              <a href="/contact" className="hover:text-black">
+              <a href="/pages/contact" className="hover:text-black">
                 Contact
               </a>
             </li>
@@ -53,7 +53,7 @@ export default function Footer() {
       </div>
 
       <div className="text-center text-gray-500 text-sm mt-8">
-        © {new Date().getFullYear()} Your Company. All rights reserved.
+        © {new Date().getFullYear()} GN. All rights reserved.
       </div>
     </footer>
   );

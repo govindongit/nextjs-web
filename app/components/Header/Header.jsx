@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import NavLinks from "./NavLinks";
+import Link from "next/link";
 import MobileMenu from "./MobileMenu";
 import { Menu } from "lucide-react";
 
@@ -13,9 +14,9 @@ export default function Header() {
       <header className="w-full shadow-sm bg-white sticky top-0 z-40">
         <div className="max-w-6xl mx-auto flex justify-between items-center py-4 px-4">
           {/* Logo */}
-          <a href="/">
+          <Link href="/">
             <img src="/next.svg" alt="Logo" className="h-6" />
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex gap-8 text-sm font-medium">
