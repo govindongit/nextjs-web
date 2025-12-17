@@ -1,9 +1,28 @@
 "use client";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export default function HeroCarousel({ interval = 4000 }) {
+  const slideVariants = {
+    initial: {
+      opacity: 0,
+      x: 24,
+      scale: 1.02,
+    },
+    animate: {
+      opacity: 1,
+      x: 0,
+      scale: 1,
+    },
+    exit: {
+      opacity: 0,
+      x: -24,
+      scale: 1.02,
+    },
+  };
+
   const slides = [
     {
       id: 1,
@@ -43,68 +62,54 @@ export default function HeroCarousel({ interval = 4000 }) {
     <section className="w-full relative overflow-hidden">
       {/* Desktop */}
       <div className="hidden md:block w-full relative">
-        {slides.map((s, i) => {
-          const isActive = i === index;
-
-          return (
-            <div
-              key={s.id}
-              className={`
-                transition-all duration-700 ease-in-out
-                will-change-[opacity,transform]
-                ${
-                  isActive
-                    ? "opacity-100 translate-x-0 scale-100 block"
-                    : "opacity-0 translate-x-6 scale-[1.02] hidden"
-                }
-              `}
-            >
-              <Image
-                src={s.desktop}
-                alt={s.alt}
-                width={1920}
-                height={900}
-                sizes="100vw"
-                priority={i === 0}
-                loading={i === 0 ? "eager" : "lazy"}
-                className="w-full h-auto"
-              />
-            </div>
-          );
-        })}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={index}
+            variants={slideVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{ duration: 0.7, ease: "easeInOut" }}
+            className="w-full"
+          >
+            <Image
+              src={slides[index].desktop}
+              alt={slides[index].alt}
+              width={1920}
+              height={900}
+              sizes="100vw"
+              priority={index === 0}
+              loading={index === 0 ? "eager" : "lazy"}
+              className="w-full h-auto"
+            />
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Mobile */}
       <div className="block md:hidden w-full relative">
-        {slides.map((s, i) => {
-          const isActive = i === index;
-
-          return (
-            <div
-              key={s.id}
-              className={`
-                transition-all duration-700 ease-in-out
-                will-change-[opacity,transform]
-                ${
-                  isActive
-                    ? "opacity-100 translate-x-0 scale-100 block"
-                    : "opacity-0 translate-x-6 scale-[1.02] hidden"
-                }
-              `}
-            >
-              <Image
-                src={s.mobile}
-                alt={s.alt}
-                width={1080}
-                height={1350}
-                sizes="100vw"
-                priority={i === 0}
-                loading={i === 0 ? "eager" : "lazy"}
-                className="w-full h-auto"
-              />
-            </div>
-          );
-        })}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={index}
+            variants={slideVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{ duration: 0.7, ease: "easeInOut" }}
+            className="w-full"
+          >
+            <Image
+              src={slides[index].mobile}
+              alt={slides[index].alt}
+              width={1080}
+              height={1350}
+              sizes="100vw"
+              priority={index === 0}
+              loading={index === 0 ? "eager" : "lazy"}
+              className="w-full h-auto"
+            />
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Controls */}
