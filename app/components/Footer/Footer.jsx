@@ -12,7 +12,7 @@ export default function Footer() {
             ></img>
           </div>
           <p className="text-gray-600 text-sm">
-            This is all made by the GN for the testing{" "}
+            This is all made by the GN for the testing.
           </p>
         </div>
 
