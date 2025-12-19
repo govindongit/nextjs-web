@@ -1,16 +1,15 @@
 import HeroCarousel from "@/app/components/HeroCarousel/HeroCarousel";
+import Image from "next/image";
+import Button from "@/app/components/UI/Button";
 export default function HomePage() {
   return (
     <>
       <HeroCarousel />
-      <section className="flex min-h-screen justify-center bg-zinc-50 font-sans dark:bg-black">
-        <div>
-          We are building the Next.js based project And this is our Home page.
-        </div>
-      </section>
-      <section className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
+
+      <section className="bg-white py-10">
+        <div className="max-w-7xl mx-auto px-5">
+          {/* Header */}
+          <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               About Us
             </h2>
@@ -20,15 +19,20 @@ export default function HomePage() {
             </p>
           </div>
 
+          {/* Content */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-            <div>
-              <img
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+            {/* Image */}
+            <div className="relative w-full h-[350px]">
+              <Image
+                src="/img/hero/hey-honey-crop-top-mocha-muse-desk.webp"
                 alt="About us"
-                className="rounded-2xl shadow-lg w-full"
+                fill
+                className="rounded-2xl shadow-lg object-cover"
+                priority
               />
             </div>
 
+            {/* Text */}
             <div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">
                 Who We Are
@@ -45,12 +49,16 @@ export default function HomePage() {
                 clients to transform ideas into successful digital products.
               </p>
 
-              <a
-                href="#"
-                className="inline-block bg-black text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition"
+              {/* <Link
+                href="/pages/about"
+                className="inline-block bg-black text-white px-6 py-3 rounded-2xl text-sm font-medium hover:bg-gray-800 transition"
               >
                 Learn More
-              </a>
+              </Link> */}
+              <Button href="/pages/about">Learn More</Button>
+              <Button href="/pages/contact" variant="secondary">
+                Contact Us
+              </Button>
             </div>
           </div>
         </div>
