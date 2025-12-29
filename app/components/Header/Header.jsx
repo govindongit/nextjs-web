@@ -5,6 +5,7 @@ import NavLinks from "./NavLinks";
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
 import { Menu } from "lucide-react";
+import Image from "next/image";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -15,7 +16,13 @@ export default function Header() {
         <div className="max-w-6xl mx-auto flex justify-between items-center py-4 px-4">
           {/* Logo */}
           <Link href="/">
-            <img src="/next.svg" alt="Logo" className="h-6" />
+            <Image
+              src="/next.svg"
+              alt="Logo"
+              className="h-6"
+              width={180}
+              height={38}
+            />
           </Link>
 
           {/* Desktop Nav */}
