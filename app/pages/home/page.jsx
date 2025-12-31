@@ -63,6 +63,66 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <section className="bg-gray-50 py-16">
+        <div className="max-w-7xl mx-auto px-5">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+              Our Services
+            </h2>
+            <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+              We offer end-to-end digital solutions designed to help your
+              business stand out and grow.
+            </p>
+          </div>
+
+          {/* Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Card 1 */}
+            <div className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition">
+              <div className="w-12 h-12 flex items-center justify-center bg-black text-white rounded-xl mb-4">
+                💻
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Web Development
+              </h3>
+              <p className="text-gray-600">
+                High-performance, responsive websites built with modern
+                technologies like Next.js and Tailwind CSS.
+              </p>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition">
+              <div className="w-12 h-12 flex items-center justify-center bg-black text-white rounded-xl mb-4">
+                🎨
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                UI / UX Design
+              </h3>
+              <p className="text-gray-600">
+                Clean, user-focused designs that create engaging and intuitive
+                experiences for your audience.
+              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition">
+              <div className="w-12 h-12 flex items-center justify-center bg-black text-white rounded-xl mb-4">
+                🚀
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Brand & Growth
+              </h3>
+              <p className="text-gray-600">
+                We help shape your brand identity and build digital strategies
+                that drive growth and visibility.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
