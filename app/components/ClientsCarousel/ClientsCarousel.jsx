@@ -9,9 +9,9 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-export function CarouselDemo() {
+export function ClientsCarousel() {
   return (
-    <Carousel className="w-full max-w-xs">
+    <Carousel className="w-full max-w-xs flex align-center">
       <CarouselContent>
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem key={index}>
