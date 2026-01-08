@@ -1,15 +1,17 @@
+import Image from "next/image";
+
 export default function Footer() {
   return (
     <footer className="bg-gray-100 py-10">
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10 text-center ">
         <div>
           <div className="grid justify-center mb-4">
-            <img
+            <Image
               src="/next.svg"
               alt="Company Logo"
               width={100}
               height={100}
-            ></img>
+            ></Image>
           </div>
           <p className="text-gray-600 text-sm">
             This is all made by the GN for the testing.
