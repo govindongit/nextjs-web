@@ -2,6 +2,8 @@ import HeroCarousel from "@/app/components/HeroCarousel/HeroCarousel";
 import Image from "next/image";
 import Button from "@/app/components/UI/Button";
 import { ClientsCarousel } from "@/app/components/ClientsCarousel/ClientsCarousel";
+import Faq from "@/app/components/Faq/Faq";
+
 export default function HomePage() {
   return (
     <>
@@ -124,7 +126,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
+      <Faq />
       <ClientsCarousel />
     </>
   );

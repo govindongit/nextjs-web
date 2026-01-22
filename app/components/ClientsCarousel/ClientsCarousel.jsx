@@ -46,13 +46,13 @@ export function ClientsCarousel() {
       onMouseEnter={stopAutoplay}
       onMouseLeave={startAutoplay}
     >
-      <CarouselPrevious />
+      {/* <CarouselPrevious /> */}
 
       <CarouselContent className="gap-2">
         {CLIENTS.map((id) => (
           <CarouselItem key={id} className="basis-1/2 md:basis-1/8 p-1">
             <Card>
-              <CardContent className="flex aspect-square items-center justify-center">
+              <CardContent className="flex items-center justify-center">
                 <Image
                   src={`/img/clients/${id}.webp`}
                   alt={`Client ${id}`}
@@ -66,7 +66,7 @@ export function ClientsCarousel() {
         ))}
       </CarouselContent>
 
-      <CarouselNext />
+      {/* <CarouselNext /> */}
     </Carousel>
   );
 }
